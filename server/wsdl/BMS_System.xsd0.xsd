@@ -1,0 +1,312 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16" elementFormDefault="qualified" targetNamespace="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16">
+<xs:element name="AddFace">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="dataRegistrationID" nillable="true" type="tns:CDataRegistrationID"/>
+<xs:element minOccurs="0" name="faceImage" nillable="true" type="tns:CFaceImage"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="CDataRegistrationID">
+<xs:sequence>
+<xs:element name="ApplicationFormID" nillable="true" type="xs:string"/>
+<xs:element name="SSN" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="CDataRegistrationID" nillable="true" type="tns:CDataRegistrationID"/>
+<xs:complexType name="CFaceImage">
+<xs:sequence>
+<xs:element name="ImageData" nillable="true" type="xs:base64Binary"/>
+<xs:element name="ImageDataFormat" type="tns:EnumImageFaceDataFormat"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="CFaceImage" nillable="true" type="tns:CFaceImage"/>
+<xs:simpleType name="EnumImageFaceDataFormat">
+<xs:restriction base="xs:string">
+<xs:enumeration value="JPEG"/>
+<xs:enumeration value="JPEG2000"/>
+<xs:enumeration value="BMP"/>
+<xs:enumeration value="PNG"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="EnumImageFaceDataFormat" nillable="true" type="tns:EnumImageFaceDataFormat"/>
+<xs:element name="AddFaceResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="AddFaceResult" type="tns:EnumAddingTaskStatus"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="EnumAddingTaskStatus">
+<xs:restriction base="xs:string">
+<xs:enumeration value="OK"/>
+<xs:enumeration value="TaskFailed"/>
+<xs:enumeration value="ServerNotReady"/>
+<xs:enumeration value="UniqueRegistrationIDError"/>
+<xs:enumeration value="ImageExtractionError"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="EnumAddingTaskStatus" nillable="true" type="tns:EnumAddingTaskStatus"/>
+<xs:element name="AddFingerprints">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="dataRegistrationID" nillable="true" type="tns:CDataRegistrationID"/>
+<xs:element minOccurs="0" name="fingerprintImages" nillable="true" type="tns:ArrayOfCFingerprintImage"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="ArrayOfCFingerprintImage">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="CFingerprintImage" nillable="true" type="tns:CFingerprintImage"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfCFingerprintImage" nillable="true" type="tns:ArrayOfCFingerprintImage"/>
+<xs:complexType name="CFingerprintImage">
+<xs:sequence>
+<xs:element name="ImageData" nillable="true" type="xs:base64Binary"/>
+<xs:element name="ImageDataFormat" type="tns:EnumImageFingerprintDataFormat"/>
+<xs:element name="ImageFingerPosition" type="tns:EnumFingerPosition"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="CFingerprintImage" nillable="true" type="tns:CFingerprintImage"/>
+<xs:simpleType name="EnumImageFingerprintDataFormat">
+<xs:restriction base="xs:string">
+<xs:enumeration value="WSQ"/>
+<xs:enumeration value="JPEG"/>
+<xs:enumeration value="JPEG2000"/>
+<xs:enumeration value="BMP"/>
+<xs:enumeration value="PNG"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="EnumImageFingerprintDataFormat" nillable="true" type="tns:EnumImageFingerprintDataFormat"/>
+<xs:simpleType name="EnumFingerPosition">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Unknown"/>
+<xs:enumeration value="RightThumb"/>
+<xs:enumeration value="RightIndex"/>
+<xs:enumeration value="RightMiddle"/>
+<xs:enumeration value="RightRing"/>
+<xs:enumeration value="RightLittle"/>
+<xs:enumeration value="LeftThumb"/>
+<xs:enumeration value="LeftIndex"/>
+<xs:enumeration value="LeftMiddle"/>
+<xs:enumeration value="LeftRing"/>
+<xs:enumeration value="LeftLittle"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="EnumFingerPosition" nillable="true" type="tns:EnumFingerPosition"/>
+<xs:element name="AddFingerprintsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="AddFingerprintsResult" type="tns:EnumAddingTaskStatus"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="DeleteFace">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="dataRegistrationID" nillable="true" type="tns:CDataRegistrationID"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="DeleteFaceResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DeleteFaceResult" type="tns:EnumDeletingTaskStatus"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="EnumDeletingTaskStatus">
+<xs:restriction base="xs:string">
+<xs:enumeration value="OK"/>
+<xs:enumeration value="TaskFailed"/>
+<xs:enumeration value="ServerNotReady"/>
+<xs:enumeration value="UniqueRegistrationIDError"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="EnumDeletingTaskStatus" nillable="true" type="tns:EnumDeletingTaskStatus"/>
+<xs:element name="DeleteFingerprints">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="dataRegistrationID" nillable="true" type="tns:CDataRegistrationID"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="DeleteFingerprintsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DeleteFingerprintsResult" type="tns:EnumDeletingTaskStatus"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="VerifyFace">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="SSN" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="faceImage" nillable="true" type="tns:CFaceImage"/>
+<xs:element minOccurs="0" name="bmsMatchingThreshold" type="xs:int"/>
+<xs:element minOccurs="0" name="result" nillable="true" type="tns:CMatchingResult"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="CMatchingResult">
+<xs:sequence>
+<xs:element name="DataRegistrationID" nillable="true" type="tns:CDataRegistrationID"/>
+<xs:element name="Score" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="CMatchingResult" nillable="true" type="tns:CMatchingResult"/>
+<xs:element name="VerifyFaceResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="VerifyFaceResult" type="tns:EnumVerificationTaskStatus"/>
+<xs:element minOccurs="0" name="bmsMatchingThreshold" type="xs:int"/>
+<xs:element minOccurs="0" name="result" nillable="true" type="tns:CMatchingResult"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="EnumVerificationTaskStatus">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Verified"/>
+<xs:enumeration value="NotVerified"/>
+<xs:enumeration value="TaskFailed"/>
+<xs:enumeration value="ServerNotReady"/>
+<xs:enumeration value="UniqueRegistrationIDError"/>
+<xs:enumeration value="ImageExtractionError"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="EnumVerificationTaskStatus" nillable="true" type="tns:EnumVerificationTaskStatus"/>
+<xs:element name="VerifyFingerprints">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="SSN" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="fingerprintImages" nillable="true" type="tns:ArrayOfCFingerprintImage"/>
+<xs:element minOccurs="0" name="bmsMatchingThreshold" type="xs:int"/>
+<xs:element minOccurs="0" name="result" nillable="true" type="tns:CMatchingResult"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="VerifyFingerprintsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="VerifyFingerprintsResult" type="tns:EnumVerificationTaskStatus"/>
+<xs:element minOccurs="0" name="bmsMatchingThreshold" type="xs:int"/>
+<xs:element minOccurs="0" name="result" nillable="true" type="tns:CMatchingResult"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="IdentifyFace">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="faceImage" nillable="true" type="tns:CFaceImage"/>
+<xs:element minOccurs="0" name="resultListLimit" type="xs:int"/>
+<xs:element minOccurs="0" name="bmsMatchingThreshold" type="xs:int"/>
+<xs:element minOccurs="0" name="results" nillable="true" type="tns:ArrayOfCMatchingResult"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="ArrayOfCMatchingResult">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="CMatchingResult" nillable="true" type="tns:CMatchingResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfCMatchingResult" nillable="true" type="tns:ArrayOfCMatchingResult"/>
+<xs:element name="IdentifyFaceResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="IdentifyFaceResult" type="tns:EnumIdentificationTaskStatus"/>
+<xs:element minOccurs="0" name="bmsMatchingThreshold" type="xs:int"/>
+<xs:element minOccurs="0" name="results" nillable="true" type="tns:ArrayOfCMatchingResult"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="EnumIdentificationTaskStatus">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Identified"/>
+<xs:enumeration value="NotIdentified"/>
+<xs:enumeration value="TaskFailed"/>
+<xs:enumeration value="ServerNotReady"/>
+<xs:enumeration value="ImageExtractionError"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="EnumIdentificationTaskStatus" nillable="true" type="tns:EnumIdentificationTaskStatus"/>
+<xs:element name="IdentifyFingerprints">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="fingerprintImages" nillable="true" type="tns:ArrayOfCFingerprintImage"/>
+<xs:element minOccurs="0" name="resultListLimit" type="xs:int"/>
+<xs:element minOccurs="0" name="bmsMatchingThreshold" type="xs:int"/>
+<xs:element minOccurs="0" name="results" nillable="true" type="tns:ArrayOfCMatchingResult"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="IdentifyFingerprintsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="IdentifyFingerprintsResult" type="tns:EnumIdentificationTaskStatus"/>
+<xs:element minOccurs="0" name="bmsMatchingThreshold" type="xs:int"/>
+<xs:element minOccurs="0" name="results" nillable="true" type="tns:ArrayOfCMatchingResult"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CreateFIR">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="fingerprintImages" nillable="true" type="tns:ArrayOfCFingerprintImage"/>
+<xs:element minOccurs="0" name="firStructure" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CreateFIRResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CreateFIRResult" type="tns:EnumImageTaskStatus"/>
+<xs:element minOccurs="0" name="firStructure" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="EnumImageTaskStatus">
+<xs:restriction base="xs:string">
+<xs:enumeration value="OK"/>
+<xs:enumeration value="TaskFailed"/>
+<xs:enumeration value="ServerNotReady"/>
+<xs:enumeration value="ImageExtractionError"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:element name="EnumImageTaskStatus" nillable="true" type="tns:EnumImageTaskStatus"/>
+<xs:element name="GetBMSServerInformation">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="details" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetBMSServerInformationResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetBMSServerInformationResult" type="xs:boolean"/>
+<xs:element minOccurs="0" name="details" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="errorDescription" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>

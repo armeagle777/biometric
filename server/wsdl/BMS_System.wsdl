@@ -1,0 +1,330 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" name="BMS_WCFService" targetNamespace="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16">
+<wsp:Policy wsu:Id="BMS_HTTPS_policy">
+<wsp:ExactlyOne>
+<wsp:All>
+<sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy>
+<sp:TransportToken>
+<wsp:Policy>
+<sp:HttpsToken RequireClientCertificate="false"/>
+</wsp:Policy>
+</sp:TransportToken>
+<sp:AlgorithmSuite>
+<wsp:Policy>
+<sp:Basic256/>
+</wsp:Policy>
+</sp:AlgorithmSuite>
+<sp:Layout>
+<wsp:Policy>
+<sp:Strict/>
+</wsp:Policy>
+</sp:Layout>
+</wsp:Policy>
+</sp:TransportBinding>
+</wsp:All>
+</wsp:ExactlyOne>
+</wsp:Policy>
+<wsdl:types>
+<xsd:schema targetNamespace="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/Imports">
+<xsd:import schemaLocation="BMS_System.xsd0.xsd" namespace="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16"/>
+<xsd:import schemaLocation="BMS_System.xsd1.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="IBMS_WCFService_AddFace_InputMessage">
+<wsdl:part name="parameters" element="tns:AddFace"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_AddFace_OutputMessage">
+<wsdl:part name="parameters" element="tns:AddFaceResponse"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_AddFingerprints_InputMessage">
+<wsdl:part name="parameters" element="tns:AddFingerprints"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_AddFingerprints_OutputMessage">
+<wsdl:part name="parameters" element="tns:AddFingerprintsResponse"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_DeleteFace_InputMessage">
+<wsdl:part name="parameters" element="tns:DeleteFace"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_DeleteFace_OutputMessage">
+<wsdl:part name="parameters" element="tns:DeleteFaceResponse"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_DeleteFingerprints_InputMessage">
+<wsdl:part name="parameters" element="tns:DeleteFingerprints"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_DeleteFingerprints_OutputMessage">
+<wsdl:part name="parameters" element="tns:DeleteFingerprintsResponse"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_VerifyFace_InputMessage">
+<wsdl:part name="parameters" element="tns:VerifyFace"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_VerifyFace_OutputMessage">
+<wsdl:part name="parameters" element="tns:VerifyFaceResponse"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_VerifyFingerprints_InputMessage">
+<wsdl:part name="parameters" element="tns:VerifyFingerprints"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_VerifyFingerprints_OutputMessage">
+<wsdl:part name="parameters" element="tns:VerifyFingerprintsResponse"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_IdentifyFace_InputMessage">
+<wsdl:part name="parameters" element="tns:IdentifyFace"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_IdentifyFace_OutputMessage">
+<wsdl:part name="parameters" element="tns:IdentifyFaceResponse"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_IdentifyFingerprints_InputMessage">
+<wsdl:part name="parameters" element="tns:IdentifyFingerprints"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_IdentifyFingerprints_OutputMessage">
+<wsdl:part name="parameters" element="tns:IdentifyFingerprintsResponse"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_CreateFIR_InputMessage">
+<wsdl:part name="parameters" element="tns:CreateFIR"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_CreateFIR_OutputMessage">
+<wsdl:part name="parameters" element="tns:CreateFIRResponse"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_GetBMSServerInformation_InputMessage">
+<wsdl:part name="parameters" element="tns:GetBMSServerInformation"/>
+</wsdl:message>
+<wsdl:message name="IBMS_WCFService_GetBMSServerInformation_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetBMSServerInformationResponse"/>
+</wsdl:message>
+<wsdl:portType name="IBMS_WCFService">
+<wsdl:operation name="AddFace">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/AddFace" message="tns:IBMS_WCFService_AddFace_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/AddFaceResponse" message="tns:IBMS_WCFService_AddFace_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="AddFingerprints">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/AddFingerprints" message="tns:IBMS_WCFService_AddFingerprints_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/AddFingerprintsResponse" message="tns:IBMS_WCFService_AddFingerprints_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="DeleteFace">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/DeleteFace" message="tns:IBMS_WCFService_DeleteFace_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/DeleteFaceResponse" message="tns:IBMS_WCFService_DeleteFace_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="DeleteFingerprints">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/DeleteFingerprints" message="tns:IBMS_WCFService_DeleteFingerprints_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/DeleteFingerprintsResponse" message="tns:IBMS_WCFService_DeleteFingerprints_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="VerifyFace">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/VerifyFace" message="tns:IBMS_WCFService_VerifyFace_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/VerifyFaceResponse" message="tns:IBMS_WCFService_VerifyFace_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="VerifyFingerprints">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/VerifyFingerprints" message="tns:IBMS_WCFService_VerifyFingerprints_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/VerifyFingerprintsResponse" message="tns:IBMS_WCFService_VerifyFingerprints_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="IdentifyFace">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/IdentifyFace" message="tns:IBMS_WCFService_IdentifyFace_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/IdentifyFaceResponse" message="tns:IBMS_WCFService_IdentifyFace_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="IdentifyFingerprints">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/IdentifyFingerprints" message="tns:IBMS_WCFService_IdentifyFingerprints_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/IdentifyFingerprintsResponse" message="tns:IBMS_WCFService_IdentifyFingerprints_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CreateFIR">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/CreateFIR" message="tns:IBMS_WCFService_CreateFIR_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/CreateFIRResponse" message="tns:IBMS_WCFService_CreateFIR_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetBMSServerInformation">
+<wsdl:input wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/GetBMSServerInformation" message="tns:IBMS_WCFService_GetBMSServerInformation_InputMessage"/>
+<wsdl:output wsaw:Action="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/GetBMSServerInformationResponse" message="tns:IBMS_WCFService_GetBMSServerInformation_OutputMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="BMS_HTTP" type="tns:IBMS_WCFService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="AddFace">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/AddFace" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AddFingerprints">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/AddFingerprints" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="DeleteFace">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/DeleteFace" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="DeleteFingerprints">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/DeleteFingerprints" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="VerifyFace">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/VerifyFace" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="VerifyFingerprints">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/VerifyFingerprints" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IdentifyFace">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/IdentifyFace" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IdentifyFingerprints">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/IdentifyFingerprints" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateFIR">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/CreateFIR" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetBMSServerInformation">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/GetBMSServerInformation" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="BMS_HTTPS" type="tns:IBMS_WCFService">
+<wsp:PolicyReference URI="#BMS_HTTPS_policy"/>
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="AddFace">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/AddFace" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AddFingerprints">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/AddFingerprints" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="DeleteFace">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/DeleteFace" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="DeleteFingerprints">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/DeleteFingerprints" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="VerifyFace">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/VerifyFace" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="VerifyFingerprints">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/VerifyFingerprints" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IdentifyFace">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/IdentifyFace" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="IdentifyFingerprints">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/IdentifyFingerprints" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateFIR">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/CreateFIR" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetBMSServerInformation">
+<soap:operation soapAction="http://www.pwpw.pl/BMS_System/Armenia/20120124/v16/IBMS_WCFService/GetBMSServerInformation" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="BMS_WCFService">
+<wsdl:port name="BMS_HTTP" binding="tns:BMS_HTTP">
+<soap:address location="http://bms.migration.am/BMS_SystemIISHost/BMS_System.svc"/>
+</wsdl:port>
+<wsdl:port name="BMS_HTTPS" binding="tns:BMS_HTTPS">
+<soap:address location="https://bms.migration.am/BMS_SystemIISHost/BMS_System.svc"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

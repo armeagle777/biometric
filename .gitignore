@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+# scaffold-generated agent skills (reference Nest Observe telemetry)
+server/.agents/
+server/.claude/
+.impeccable/
